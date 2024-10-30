@@ -50,8 +50,14 @@ class RestaurantOrder {
         totalAmount += drink.price * quantity;
     }
 
-    public void printReceipt(int payment) {
+    public void Diskon(){
+        if(totalAmount > 200000){
+            totalAmount *= 0.9;
+        }
+    }
 
+    public void printReceipt(int payment) {
+        Diskon();
         System.out.println("\t\t\t======= RECEIPT =======");
         System.out.println("\t\t\tNomor Antrian: " + queueNumber);
         System.out.println("\t\t\tNama Pemesan: " + customerName);
@@ -141,6 +147,7 @@ public class Main {
             addMoreDrink = scanner.next().equalsIgnoreCase("Y");
         }
 
+        order.Diskon();
         order.totalAmount();
 
         System.out.print("\nMasukkan uang yang diberikan: Rp ");
